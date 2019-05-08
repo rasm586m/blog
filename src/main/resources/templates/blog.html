@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Create Blog</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <style>
+        h3 {
+            text-align: center;
+            padding: 60px;
+        }
+
+        form {
+            width: 50%;
+            margin-left: 25%;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: navbar"/>
+
+<hp th:text="'Hello ' + ${session.user.username} + '!'"/>
+<hp th:text="'Hello ' + ${session.user.role.equals('admin')} + '!'"/>
+
+<h3>Indtast titel og teksten til bloggen</h3>
+
+
+<div class="form">
+<form action="/createblog" method="post">
+    <label>Title</label>
+    <input type="text" name="title" class="form-control">
+    <label>Text</label>
+    <textarea rows="10" name="text" class="form-control"></textarea>
+    <p></p>
+    <input type="submit" class="btn btn-primary" value="Opret">
+</form>
+</div>
+
+</body>
+</html>

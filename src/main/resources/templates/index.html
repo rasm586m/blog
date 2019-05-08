@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Velkommen til MyBlog</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+<style>
+
+    h1 {
+        text-align: center;
+    }
+
+    .container {
+        padding: 60px;
+    }
+
+</style>
+
+</head>
+<body>
+<div th:replace="fragments/header :: navbar"/>
+
+<h1>Velkommen til MyBlog</h1>
+
+<div class="container">
+
+    <article th:each="blog : ${bloglist}">
+        <h2 class="title" th:text="${blog.title}">Post Title</h2>
+
+        <span th:text="'Posted by: ' + ${blog.username}">Post User</span>
+        <p></p>
+        <p class="content" th:text="${blog.text}">Post content</p>
+        <div th:if="${session.user}">
+        <a class="btn btn-primary btn-sm" th:href="${'/deleteblog/' + blog.id}">Slet</a>
+            <a class="btn btn-primary btn-sm" th:href="${'/deleteblog/' + blog.id}">Rediger</a>
+            <p></p>
+        </div>
+
+    </article>
+</div>
+
+
+</body>
+</html>
