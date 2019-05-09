@@ -39,6 +39,33 @@ public class BlogRepo {
         statement.execute(deleteBlogPost);
     }
 
+    public Blog getBlogPost(int id) throws SQLException, ClassNotFoundException {
+
+        Statement statement = blogDatabase.connect().createStatement();
+
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM blog WHERE id='" + id + "';");
+
+        Blog blog = new Blog();
+
+        while (resultSet.next()) {
+            blog.setId(resultSet.getInt("id"));
+            blog.setTitle(resultSet.getString("title"));
+            blog.setText(resultSet.getString("text"));
+            blog.setUsername(resultSet.getString("username"));
+        }
+
+        return blog;
+    }
+
+    public void updateBlogPost(int id, String title, String text) throws SQLException, ClassNotFoundException {
+
+        Statement statement = blogDatabase.connect().createStatement();
+
+        String updateBlogPost = "UPDATE blog SET title='" + title + "', text='" + text + "' WHERE id='" + id + "';";
+
+        statement.execute(updateBlogPost);
+    }
+
     public List<Blog> getAlleBlogs() throws SQLException, ClassNotFoundException {
 
         Statement statement = blogDatabase.connect().createStatement();

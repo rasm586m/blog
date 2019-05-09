@@ -30,11 +30,22 @@ public class BlogService {
 
     public void createBlogPost(String title, String text, User username) throws SQLException, ClassNotFoundException {
 
-        blogRepo.createBlogPost(title,text,username);
+        blogRepo.createBlogPost(title, text, username);
     }
 
     public void deleteBlogPost(int id) throws SQLException, ClassNotFoundException {
 
         blogRepo.deleteBlogPost(id);
+    }
+
+    public Blog getBlogPost(int id) throws SQLException, ClassNotFoundException {
+
+        return blogRepo.getBlogPost(id);
+    }
+
+    public void updateBlog(int id, String title, String text) throws SQLException, ClassNotFoundException {
+
+        blogRepo.updateBlogPost(id, title, text);
+
     }
 }

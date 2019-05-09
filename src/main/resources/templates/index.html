@@ -12,17 +12,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
-<style>
+    <style>
 
-    h1 {
-        text-align: center;
-    }
+        h1 {
+            text-align: center;
+        }
 
-    .container {
-        padding: 60px;
-    }
+        .container {
+            padding: 60px;
+        }
 
-</style>
+    </style>
 
 </head>
 <body>
@@ -39,8 +39,8 @@
         <p></p>
         <p class="content" th:text="${blog.text}">Post content</p>
         <div th:if="${session.user}">
-        <a class="btn btn-primary btn-sm" th:href="${'/deleteblog/' + blog.id}">Slet</a>
-            <a class="btn btn-primary btn-sm" th:href="${'/deleteblog/' + blog.id}">Rediger</a>
+            <a class="btn btn-primary btn-sm" th:href="${'/deleteblog/' + blog.id}">Slet</a>
+            <a class="btn btn-primary btn-sm" th:href="${'/editblog/' + blog.id}">Rediger</a>
             <p></p>
         </div>
 
